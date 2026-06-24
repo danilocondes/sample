@@ -17,3 +17,19 @@ dotnet run --project CounterWebApp/CounterWebApp.csproj
 ```
 
 Open the displayed localhost URL in a browser and click **Click me** to increment the counter.
+
+## Configure PostHog
+
+The app initializes PostHog from configuration and records each counter click as
+`counter_button_clicked`.
+
+Set your PostHog project API key in `CounterWebApp/appsettings.json` or with an
+environment variable:
+
+```bash
+PostHog__ApiKey=phc_your_project_api_key
+PostHog__Host=https://us.i.posthog.com
+```
+
+Use `https://eu.i.posthog.com` for EU-hosted PostHog projects. If `PostHog:ApiKey`
+is empty, analytics calls are skipped.
