@@ -7,7 +7,7 @@
     <p class="eyebrow">Simple .NET C# web application</p>
     <h1>Counter</h1>
     <p class="description">
-        Click the button below to increase the counter. The click handler runs in C# using Blazor.
+        Click either button below to change the counter. Each click is monitored with PostHog.
     </p>
 
     <div class="counter-display" aria-live="polite">
@@ -15,16 +15,29 @@
         <strong>@currentCount</strong>
     </div>
 
-    <button class="counter-button" @onclick="IncrementCount">Click me</button>
+    <div class="counter-actions" aria-label="Counter actions">
+        <button class="counter-button counter-button-secondary" @onclick="DecrementCount">Subtract 1</button>
+        <button class="counter-button" @onclick="IncrementCount">Add 1</button>
+    </div>
 </section>
 
 @code {
     private int currentCount;
 
-    private async Task IncrementCount()
+    private Task IncrementCount()
     {
-        currentCount++;
+        return UpdateCount("increment", 1);
+    }
 
-        await JS.InvokeVoidAsync("counterAnalytics.captureCounterClick", currentCount);
+    private Task DecrementCount()
+    {
+        return UpdateCount("decrement", -1);
+    }
+
+    private async Task UpdateCount(string action, int delta)
+    {
+        currentCount += delta;
+
+        await JS.InvokeVoidAsync("counterAnalytics.captureCounterClick", action, currentCount, delta);
     }
 }
