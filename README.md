@@ -18,6 +18,17 @@ dotnet run --project CounterWebApp/CounterWebApp.csproj
 
 Open the displayed localhost URL in a browser and click **Click me** to increment the counter.
 
+## Visual Studio restore troubleshooting
+
+If Visual Studio shows a NuGet restore warning such as "details for project
+CounterWebApp could not be loaded" but the project still builds, make sure you
+are using Visual Studio 2022 version 17.8 or later with the .NET 8 SDK installed.
+You can also restore from the command line:
+
+```bash
+dotnet restore CounterWebApp.sln
+```
+
 ## Configure PostHog
 
 The app initializes PostHog from configuration and records each counter click as
