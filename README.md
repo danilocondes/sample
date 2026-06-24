@@ -7,6 +7,7 @@ A simple .NET 8 C# Blazor web application with a clickable button and a counter.
 - `CounterWebApp.sln` - Visual Studio solution file
 - `CounterWebApp/CounterWebApp.csproj` - ASP.NET Core Blazor project
 - `CounterWebApp/Components/Pages/Home.razor` - Counter page and C# click handler
+- `global.json` - Pins the repository to the .NET 8 SDK family
 
 ## Run the app
 
@@ -23,6 +24,8 @@ Open the displayed localhost URL in a browser and click **Click me** to incremen
 If Visual Studio shows a NuGet restore warning such as "details for project
 CounterWebApp could not be loaded" but the project still builds, make sure you
 are using Visual Studio 2022 version 17.8 or later with the .NET 8 SDK installed.
+The included `global.json` asks tooling to use .NET SDK 8.0.100 or a newer .NET 8
+feature band.
 You can also restore from the command line:
 
 ```bash
