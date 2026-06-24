@@ -1,0 +1,27 @@
+@page "/"
+
+<PageTitle>Counter Web App</PageTitle>
+
+<section class="counter-card">
+    <p class="eyebrow">Simple .NET C# web application</p>
+    <h1>Counter</h1>
+    <p class="description">
+        Click the button below to increase the counter. The click handler runs in C# using Blazor.
+    </p>
+
+    <div class="counter-display" aria-live="polite">
+        <span class="counter-label">Current count</span>
+        <strong>@currentCount</strong>
+    </div>
+
+    <button class="counter-button" @onclick="IncrementCount">Click me</button>
+</section>
+
+@code {
+    private int currentCount;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
