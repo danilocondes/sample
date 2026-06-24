@@ -4,13 +4,15 @@
     const host = settings.host || "https://us.i.posthog.com";
 
     window.counterAnalytics = {
-        captureCounterClick(count) {
+        captureCounterClick(action, count, delta) {
             if (!window.posthog || typeof window.posthog.capture !== "function") {
                 return;
             }
 
             window.posthog.capture("counter_button_clicked", {
-                count
+                action,
+                count,
+                delta
             });
         }
     };

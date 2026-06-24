@@ -1,6 +1,6 @@
 # Counter Web App
 
-A simple .NET 8 C# Blazor web application with a clickable button and a counter.
+A simple .NET 8 C# Blazor web application with two clickable buttons and a counter.
 
 ## Project structure
 
@@ -17,7 +17,7 @@ Install the .NET 8 SDK, then run:
 dotnet run --project CounterWebApp/CounterWebApp.csproj
 ```
 
-Open the displayed localhost URL in a browser and click **Click me** to increment the counter.
+Open the displayed localhost URL in a browser and click **Add 1** or **Subtract 1** to change the counter.
 
 ## Visual Studio restore troubleshooting
 
@@ -34,8 +34,12 @@ dotnet restore CounterWebApp.sln
 
 ## Configure PostHog
 
-The app initializes PostHog from configuration and records each counter click as
-`counter_button_clicked`.
+The app initializes PostHog from configuration and records each counter button
+click as `counter_button_clicked` with these properties:
+
+- `action` - `increment` or `decrement`
+- `count` - the updated counter value
+- `delta` - `1` or `-1`
 
 Set your PostHog project API key in `CounterWebApp/appsettings.json` or with an
 environment variable:
