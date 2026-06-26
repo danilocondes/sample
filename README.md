@@ -29,6 +29,11 @@ You can also restore from the command line:
 dotnet restore CounterWebApp.sln
 ```
 
+If Visual Studio reports "Unable to start program ...CounterWebApp.exe" while
+debugging with IIS Express, select the `IIS Express` debug profile from the
+toolbar and try again. The repository includes an IIS Express profile in
+`CounterWebApp/Properties/launchSettings.json`.
+
 ## Configure PostHog
 
 The app initializes PostHog from configuration and records each counter button
