@@ -52,7 +52,10 @@
             "opt_out_capturing",
             "has_opted_out_capturing",
             "opt_in_capturing",
-            "reset"
+            "reset",
+            "startSessionRecording",
+            "stopSessionRecording",
+            "sessionRecordingStarted"
         ];
 
         for (let i = 0; i < methods.length; i += 1) {
@@ -70,6 +73,24 @@
 
     window.posthog.init(apiKey, {
         api_host: host,
-        person_profiles: "identified_only"
+
+        person_profiles: "identified_only",
+
+        session_recording: {
+            // Record sessions
+            recordCrossOriginIframes: false,
+
+            // Privacy protection
+            maskAllInputs: true,
+
+            // Don't hide all text unless required
+            maskTextSelector: ".sensitive",
+
+            // Optional sampling
+            sampling: {
+                sessionRecording: 1
+            }
+        }
     });
+
 }());
